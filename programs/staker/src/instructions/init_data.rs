@@ -58,7 +58,7 @@ pub struct Initialize<'info> {
                     to: ctx.accounts.vault_sol.to_account_info(),
                 },
             ),
-            100_000_000_000,
+            1_000_000_000,
         )?;
         
         let mint_ctx = CpiContext::new(
@@ -72,7 +72,7 @@ pub struct Initialize<'info> {
         let bump = ctx.bumps.pool_token;
         let pubkey = ctx.accounts.system_program.key();
         let pda_sign = &[b"pool_token", pubkey.as_ref(), &[bump]];
-        token::mint_to(mint_ctx.with_signer(&[pda_sign]), 10000000000)?;
+        token::mint_to(mint_ctx.with_signer(&[pda_sign]), 10_000_000_000)?;
 
         Ok(())
     }
