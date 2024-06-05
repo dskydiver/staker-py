@@ -17,20 +17,6 @@ module.exports = async function (provider) {
     const program = new anchor.Program(idl, programId, provider);
     console.log(program.programId.toString(), bs58.encode(keypair));
 
-    let connection = provider.connection;
-    let payer = web3.Keypair.generate();
-    let airdrop = await connection.requestAirdrop(
-      payer.publicKey,
-      web3.LAMPORTS_PER_SOL * 100
-    );
-    const latestBlockHash = await connection.getLatestBlockhash();
-
-    await connection.confirmTransaction({
-      blockhash: latestBlockHash.blockhash,
-      lastValidBlockHeight: latestBlockHash.lastValidBlockHeight,
-      signature: airdrop,
-    });
-
     const [pool_token_pda] = anchor.web3.PublicKey.findProgramAddressSync(
       [Buffer.from("pool_token"), web3.SystemProgram.programId.toBuffer()],
       program.programId
