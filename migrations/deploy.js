@@ -6,10 +6,11 @@ const web3 = require("@solana/web3.js");
 const anchor = require("@coral-xyz/anchor");
 const token = require("@solana/spl-token");
 
-const programId = "5KPMSJEraFFCrxHiB2mXVQQzNft6spohjEtwVfYzEqd3";
+const programId = "4Xi45X7QeEybUF5g1Dhu81BTeXz6Z6VSHveJqsg5uT5J";
 
 module.exports = async function (provider) {
   try {
+    // Configure client to use the provider.
     anchor.setProvider(provider);
     const program = new anchor.Program(idl, programId, provider);
 

@@ -6,9 +6,9 @@ pub mod state;
 use anchor_lang::prelude::*;
 
 pub use constants::*;
-pub use instructions::*;
+use instructions::*;
 
-declare_id!("5KPMSJEraFFCrxHiB2mXVQQzNft6spohjEtwVfYzEqd3");
+declare_id!("4Xi45X7QeEybUF5g1Dhu81BTeXz6Z6VSHveJqsg5uT5J");
 
 #[program]
 pub mod staker {
