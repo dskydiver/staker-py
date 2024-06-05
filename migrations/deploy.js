@@ -3,7 +3,7 @@
 // configured from the workspace's Anchor.toml.
 const idl = require("../target/idl/staker.json");
 const web3 = require("@solana/web3.js");
-const keypair = require("/home/iwansteven/.config/solana/id.json");
+const keypair = require("~/.config/solana/id.json");
 const { bs58 } = require("@coral-xyz/anchor/dist/cjs/utils/bytes");
 const anchor = require("@coral-xyz/anchor");
 const token = require("@solana/spl-token");
