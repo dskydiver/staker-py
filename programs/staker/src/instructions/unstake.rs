@@ -22,7 +22,7 @@ pub fn unstake(ctx: Context<Operation>, draw_amount: u64) -> Result<()> {
         },
     );
     token::transfer(transfer_ctx, draw_amount)?;
-    pool.lst_amount -= draw_amount;
+    pool.lst_amount += draw_amount;
     // take out pool token from sender
     let pool_ctx = CpiContext::new(
         ctx.accounts.system_program.to_account_info(),

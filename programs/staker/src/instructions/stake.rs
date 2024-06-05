@@ -58,7 +58,7 @@ pub fn stake(ctx: Context<Operation>, deposit_amount: u64) -> Result<()> {
         transfer_ctx.with_signer(&[pda_sign]),
         deposit_amount * lst_per_sol,
     )?;
-    pool.lst_amount += deposit_amount * lst_per_sol;
+    pool.lst_amount -= deposit_amount * lst_per_sol;
 
     Ok(())
 }
