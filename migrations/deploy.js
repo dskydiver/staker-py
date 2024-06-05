@@ -39,14 +39,14 @@ module.exports = async function (provider) {
     console.log("initializing...");
 
     // create a new staker account for SOL
-    await program.methods
-      .poolInit()
-      .accounts({
-        pool: pool_pda,
-        sender: provider.wallet.publicKey,
-        systemProgram: web3.SystemProgram.programId,
-      })
-      .rpc();
+    // await program.methods
+    //   .poolInit()
+    //   .accounts({
+    //     pool: pool_pda,
+    //     sender: provider.wallet.publicKey,
+    //     systemProgram: web3.SystemProgram.programId,
+    //   })
+    //   .rpc();
 
     await program.methods
       .init()

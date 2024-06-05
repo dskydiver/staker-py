@@ -12,7 +12,7 @@ pub struct InitPool<'info> {
 pub fn init_pool(ctx: Context<InitPool>) -> Result<()> {
     let pool = &mut ctx.accounts.pool;
     pool.lst_per_sol = 10;
-    pool.sol_amount += 100_000_000_000;
-    pool.lst_amount += 10000000000;
+    pool.sol_amount += 1_000_000_000;
+    pool.lst_amount += 10_000_000_000;
     Ok(())
 }
