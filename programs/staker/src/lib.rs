@@ -7,8 +7,8 @@ use anchor_lang::prelude::*;
 
 pub use constants::*;
 pub use instructions::*;
-//3mE2Jc9kmsVGoNFZXeXTBwDc8KxBTbZBSSEXrEqu8eMc
-declare_id!("2xVHedjn1q57KTESiWTMA9GR4M7Pd5S21ssuurqfaFtd");
+
+declare_id!("3XPVV4YaV3r1mNtjbRA3tMHMv1E7aoR6pWLfDmCuyGGS");
 
 #[program]
 pub mod staker {

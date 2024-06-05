@@ -6,7 +6,7 @@ const web3 = require("@solana/web3.js");
 const anchor = require("@coral-xyz/anchor");
 const token = require("@solana/spl-token");
 
-const programId = "2xVHedjn1q57KTESiWTMA9GR4M7Pd5S21ssuurqfaFtd";
+const programId = "3XPVV4YaV3r1mNtjbRA3tMHMv1E7aoR6pWLfDmCuyGGS";
 
 module.exports = async function (provider) {
   try {
@@ -39,14 +39,14 @@ module.exports = async function (provider) {
     console.log("initializing...");
 
     // create a new staker account for SOL
-    // await program.methods
-    //   .poolInit()
-    //   .accounts({
-    //     pool: pool_pda,
-    //     sender: provider.wallet.publicKey,
-    //     systemProgram: web3.SystemProgram.programId,
-    //   })
-    //   .rpc();
+    await program.methods
+      .poolInit()
+      .accounts({
+        pool: pool_pda,
+        sender: provider.wallet.publicKey,
+        systemProgram: web3.SystemProgram.programId,
+      })
+      .rpc();
 
     await program.methods
       .init()
