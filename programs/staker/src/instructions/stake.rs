@@ -7,11 +7,10 @@ use anchor_spl::token::{Mint, Token, TokenAccount};
 
 #[derive(Accounts)]
 pub struct Operation<'info> {
-    pub pool_treasure: Account<'info, Mint>,
     pub pool_token: Account<'info, Mint>,
-    #[account(mut, seeds=[b"vault_pool_token", system_program.key().as_ref()], bump)]
+    #[account(mut, seeds=[b"vault_pool_token"], bump)]
     pub pool_token_vault: Account<'info, TokenAccount>, // mint of synthetic token X
-    #[account(mut, seeds=[b"vault_sol", system_program.key().as_ref()], bump)]
+    #[account(mut, seeds=[b"vault_sol"], bump)]
     /// CHECK: vault for holding token
     pub vault_sol: UncheckedAccount<'info>, // mint to hold token X
     #[account(mut)]
@@ -52,8 +51,7 @@ pub fn stake(ctx: Context<Operation>, deposit_amount: u64) -> Result<()> {
         },
     );
     let bump = ctx.bumps.pool_token_vault;
-    let pubkey = ctx.accounts.system_program.key();
-    let pda_sign = &[b"vault_pool_token", pubkey.as_ref(), &[bump]];
+    let pda_sign: &[&[u8]] = &[b"vault_pool_token", &[bump]];
     token::transfer(
         transfer_ctx.with_signer(&[pda_sign]),
         deposit_amount * lst_per_sol,

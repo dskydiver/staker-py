@@ -9,7 +9,7 @@ pub struct Initialize<'info> {
     #[account(
         init,
         payer = payer,
-        seeds = [b"pool_token", system_program.key.as_ref()],
+        seeds = [b"pool_token"],
         bump,
         mint::decimals = 9,
         mint::authority = pool_token,
@@ -17,7 +17,7 @@ pub struct Initialize<'info> {
     pub pool_token: Account<'info, Mint>,
     #[account(init, 
         payer=payer,
-        seeds=[b"vault_pool_token", system_program.key().as_ref()],
+        seeds=[b"vault_pool_token"],
         bump,
         token::mint = pool_token,
         token::authority = vault_pool_token
@@ -26,7 +26,7 @@ pub struct Initialize<'info> {
     /// CHECK: vault for holding token
     #[account(
         mut, 
-        seeds=[b"vault_sol", system_program.key().as_ref()],
+        seeds=[b"vault_sol"],
         bump,
     )]
     pub vault_sol: UncheckedAccount<'info>,
@@ -70,8 +70,7 @@ pub struct Initialize<'info> {
             },
         );
         let bump = ctx.bumps.pool_token;
-        let pubkey = ctx.accounts.system_program.key();
-        let pda_sign = &[b"pool_token", pubkey.as_ref(), &[bump]];
+        let pda_sign: &[&[u8]] = &[b"pool_token", &[bump]];
         token::mint_to(mint_ctx.with_signer(&[pda_sign]), 10_000_000_000)?;
 
         Ok(())

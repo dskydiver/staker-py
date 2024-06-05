@@ -31,9 +31,8 @@ pub fn unstake(ctx: Context<Operation>, draw_amount: u64) -> Result<()> {
             to: ctx.accounts.sender.to_account_info(),
         },
     );
-    let pubkey = ctx.accounts.system_program.key();
     let bump = ctx.bumps.vault_sol;
-    let pda_sign = &[b"vault_sol", pubkey.as_ref(), &[bump]];
+    let pda_sign: &[&[u8]] = &[b"vault_sol", &[bump]];
     system_program::transfer(pool_ctx.with_signer(&[pda_sign]), draw_amount / lst_per_sol)?;
     pool.sol_amount -= draw_amount / lst_per_sol;
     Ok(())

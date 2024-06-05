@@ -3,7 +3,6 @@ import { Program } from "@coral-xyz/anchor";
 import { Staker } from "../target/types/staker";
 import * as web3 from "@solana/web3.js";
 import * as token from "@solana/spl-token";
-import { NATIVE_MINT } from "@solana/spl-token";
 describe("staker", async () => {
   try {
     let provider = anchor.AnchorProvider.env();
@@ -24,19 +23,16 @@ describe("staker", async () => {
     });
 
     const [pool_token_pda] = anchor.web3.PublicKey.findProgramAddressSync(
-      [Buffer.from("pool_token"), web3.SystemProgram.programId.toBuffer()],
+      [Buffer.from("pool_token")],
       program.programId
     );
     const [vault_sol_pda] = anchor.web3.PublicKey.findProgramAddressSync(
-      [Buffer.from("vault_sol"), web3.SystemProgram.programId.toBuffer()],
+      [Buffer.from("vault_sol")],
       program.programId
     );
 
     const [vault_pool_token_pda] = anchor.web3.PublicKey.findProgramAddressSync(
-      [
-        Buffer.from("vault_pool_token"),
-        web3.SystemProgram.programId.toBuffer(),
-      ],
+      [Buffer.from("vault_pool_token")],
       program.programId
     );
 
@@ -98,7 +94,6 @@ describe("staker", async () => {
     }
 
     let operation_accounts = {
-      poolTreasure: NATIVE_MINT,
       poolToken: pool_token_pda,
       poolTokenVault: vault_pool_token_pda,
       vaultSol: vault_sol_pda,

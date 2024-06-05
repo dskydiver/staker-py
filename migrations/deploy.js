@@ -10,24 +10,20 @@ const programId = "5KPMSJEraFFCrxHiB2mXVQQzNft6spohjEtwVfYzEqd3";
 
 module.exports = async function (provider) {
   try {
-    // Configure client to use the provider.
     anchor.setProvider(provider);
     const program = new anchor.Program(idl, programId, provider);
 
     const [pool_token_pda] = anchor.web3.PublicKey.findProgramAddressSync(
-      [Buffer.from("pool_token"), web3.SystemProgram.programId.toBuffer()],
+      [Buffer.from("pool_token")],
       program.programId
     );
     const [vault_sol_pda] = anchor.web3.PublicKey.findProgramAddressSync(
-      [Buffer.from("vault_sol"), web3.SystemProgram.programId.toBuffer()],
+      [Buffer.from("vault_sol")],
       program.programId
     );
 
     const [vault_pool_token_pda] = anchor.web3.PublicKey.findProgramAddressSync(
-      [
-        Buffer.from("vault_pool_token"),
-        web3.SystemProgram.programId.toBuffer(),
-      ],
+      [Buffer.from("vault_pool_token")],
       program.programId
     );
 
