@@ -5,7 +5,7 @@ seeds = false
 skip-lint = false
 
 [programs.localnet]
-staker = "3XPVV4YaV3r1mNtjbRA3tMHMv1E7aoR6pWLfDmCuyGGS"
+staker = "5KPMSJEraFFCrxHiB2mXVQQzNft6spohjEtwVfYzEqd3"
 
 [registry]
 url = "https://api.apr.dev"
