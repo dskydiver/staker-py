@@ -14,10 +14,10 @@ declare_id!("2xVHedjn1q57KTESiWTMA9GR4M7Pd5S21ssuurqfaFtd");
 pub mod staker {
     use super::*;
     pub fn init(ctx: Context<Initialize>) -> Result<()> {
-        instructions::initData::initialize(ctx)
+        instructions::init_data::initialize(ctx)
     }
     pub fn pool_init(ctx: Context<InitPool>) -> Result<()> {
-        instructions::initPool::init_pool(ctx)
+        instructions::init_pool::init_pool(ctx)
     }
     pub fn stake(ctx: Context<Operation>, deposit_amount: u64) -> Result<()> {
         instructions::stake::stake(ctx, deposit_amount)
