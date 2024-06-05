@@ -3,8 +3,6 @@
 // configured from the workspace's Anchor.toml.
 const idl = require("../target/idl/staker.json");
 const web3 = require("@solana/web3.js");
-const keypair = require("~/.config/solana/id.json");
-const { bs58 } = require("@coral-xyz/anchor/dist/cjs/utils/bytes");
 const anchor = require("@coral-xyz/anchor");
 const token = require("@solana/spl-token");
 
@@ -15,7 +13,6 @@ module.exports = async function (provider) {
     // Configure client to use the provider.
     anchor.setProvider(provider);
     const program = new anchor.Program(idl, programId, provider);
-    console.log(program.programId.toString(), bs58.encode(keypair));
 
     const [pool_token_pda] = anchor.web3.PublicKey.findProgramAddressSync(
       [Buffer.from("pool_token"), web3.SystemProgram.programId.toBuffer()],
